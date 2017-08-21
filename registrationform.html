@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title> Registration Form</title>
+	<style>
+
+		
+
+		h1 {
+			text-align: center;
+		}
+
+		
+		
+
+		
+		footer {
+			position: relative;
+			height: 40px;
+			width: 100%;
+			background-color: #333333;
+		}
+
+		.copyright {
+			position: absolute;
+			width: 100%;
+			color: #fff;
+			line-height: 40px;
+			font-size: 0.7em;
+			text-align: center;
+			bottom: 0;
+		}
+
+		
+
+	</style>
+
+	
+	
+</head>
+	
+<body>
+
+	<h1>Job Details</h1>
+
+	<form action="registrationSuccessful.html" method="post" name="registration" id="registration">
+
+		<table border="1" align="center">
+
+			<thead></thead>
+
+			<tfoot></tfoot>
+
+			<tbody>
+				<tr>
+					<td >Job Title: </td>
+					<td ><input type="text" name="jobTitle" id="jobTitle" /></td>
+				</tr>
+				<tr rowspan="3">
+					<td >Description: </td>
+					<td ><textarea maxlength="500" name="description" form="registration"></textarea> <br> <p>Brief Description should have at most 500 characters.</p></td>
+				</tr>
+				<tr>
+					<td >Company Name: </td>
+					<td ><input type="text" name="comName" id="comName" /></td>
+				</tr>
+				<tr>
+					<td >Contact number: </td>
+					<td ><input type="tel" name="contactNo" id="contactNo" /></td>
+				</tr>
+				<tr>
+					<td >Contact person: </td>
+					<td ><input type="text" name="contactPerson" id="contactPerson" /></td>
+				</tr>
+				<tr>
+					<td >Email: </td>
+					<td ><input type="email" name="personEmail" id="personEmail" /></td>
+				</tr>
+				<tr>
+					<td >Work Status: </td>
+					<td >
+						<input type="checkbox" class="radio" name="workStatus" id="full" value="Full Time" onmouseup="onlyOne();"> Full Time
+  						<input type="checkbox" class="radio" name="workStatus" id="part" value="Part Time"  onmouseup="onlyOne();"> Part Time
+  						<input type="checkbox" class="radio" name="workStatus" id="dim" value="Per Dim" onmouseup="onlyOne();"> Per Dim
+  						<input type="checkbox" class="radio" name="workStatus" id="others" value="Others" onmouseup="onlyOne();"> Others
+  					</td>
+  					
+				</tr>
+				<tr>
+					<td >Salary: </td>
+					<td >	
+						<input type="text" name="salary" id="salary" />
+						<select id="currency" name="currency">
+							<option label="US Dollar" value="us"></option>
+							<option label="Sing Dollar" value="sing"></option>
+							<option label="ringgit" value="ringgit"></option>
+						</select>
+						<select id="duration" name="duration">
+							<option label="Yearly" value="Yearly"></option>
+							<option label="Monthly" value="Monthly"></option>
+							<option label="Weekly" value="Weekly"></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td >Experience(Years): </td>
+					<td ><input type="number" name="experience" id="experience" /></td>
+				</tr>
+				<tr>
+					<td >Locations: </td>
+					<td ><input type="text" name="location" id="location" /></td>
+				</tr>
+				<tr rowspan="4">
+					<td>Qualifications: </td>
+					<td >
+						<select id="mySelect" size="4" >
+   							 <option label="Any" value="Any">Any</option>
+   							 <option label="High School" value="High School">High School</option>
+   							 <option label="Associate" value="Associate">Associate</option>
+    						 <option label="Pre Bachelors" value="Pre Bachelors">Pre Bachelors</option>
+  						</select>
+  						<button type="button" onclick="add()">Add</button>
+  						<button  type="button" onclick="myFunction()">Remove</button>
+  						<select id="mySelect2" size="4" >
+  						</select>
+  						
+					</td>
+				</tr>
+
+				<tr>
+					<td ><input type="hidden" id="qualification" name="qualification" value=""><input type="submit" name="Submit" onclick="setQualifications()"></td>
+					<td ><input type="reset" name="Reset"></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</form>
+	
+	
+
+</body>
+
+<footer>
+	<p class="copyright">Created By: Ho Zheng Han, September 2012</p>
+	
+	
+	<script>
+		var animals = document.forms['registration'], animalList = animals.workStatus, animalLen = animalList.length;
+
+		function onlyOne(){
+  			for(var i = 0; i < animalLen; i++){
+   		 		animalList[i].checked = false;
+   		 	}
+   		 	this.checked = true;
+  		}
+
+		function myFunction() {
+    		var x = document.getElementById("mySelect2");
+    		x.remove(x.selectedIndex);
+		}
+
+  		function add() {
+    		var x = document.getElementById("mySelect");
+    		var y = document.getElementById("mySelect2");
+    		var option = document.createElement("option");
+    		option.text = x.options[x.selectedIndex].value;
+   			 y.add(option);
+
+		}
+
+		function setQualifications() {
+			var t = document.getElementById("mySelect2");
+			var txt = "";
+
+			for (i = 0; i < t.length; i++) {
+   				 txt = txt + t.options[i].text + "<br>";
+			}	
+			document.getElementById("qualification").value = txt;
+		}
+		
+	</script>
+</footer>
+</html>
